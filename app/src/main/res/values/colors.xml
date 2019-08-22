@@ -3,4 +3,6 @@
     <color name="colorPrimary">#737877</color>
     <color name="colorPrimaryDark">#737877</color>
     <color name="colorAccent">#737877</color>
+    <color name="corBotao">#1E90FF</color>
+    <color name="corTexto">#FFFFFF</color>
 </resources>
