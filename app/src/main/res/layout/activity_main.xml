@@ -7,112 +7,150 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/botaoPapelId"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/corBotao"
+        android:text="Papel"
+        android:textColor="@color/corTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+    <Button
+        android:id="@+id/botaoUltimasJogadas"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@color/corBotao"
+        android:text="Últimas Jogadas"
+        android:textColor="@color/corTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/botaoTesouraId"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/corBotao"
+        android:text="Tesoura"
+        android:textColor="@color/corTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+    <Button
+        android:id="@+id/botaoPedraId"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/corBotao"
+        android:text="Pedra"
+        android:textColor="@color/corTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="-194dp"
-        tools:layout_editor_absoluteY="-83dp">
+        android:layout_height="194dp"
+        android:background="@drawable/jokenpo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Java"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Java"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/textoResultadoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado Jogada"
+        android:textColor="@color/corBotao"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+    <ImageView
+        android:id="@+id/imagemComputadorId"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="194dp"
-                android:background="@drawable/jokenpo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:srcCompat="@drawable/jokenpo" />
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/imagemJogadorId"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20px"
-            android:scrollbarFadeDuration="250">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Computador"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="90dp"
-                android:layout_height="40dp"
-                android:background="@color/corBotao"
-                android:text="Tesoura"
-                android:textColor="@color/corTexto"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"></Button>
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="90dp"
-                android:layout_height="40dp"
-                android:background="@color/corBotao"
-                android:text="Papel"
-                android:textColor="@color/corTexto"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button3"
-                tools:ignore="MissingConstraints"></Button>
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="90dp"
-                android:layout_height="40dp"
-                android:background="@color/corBotao"
-                android:text="Pedra"
-                android:textColor="@color/corTexto"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                tools:ignore="MissingConstraints"></Button>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_gravity="bottom">
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_gravity="bottom"
-                android:background="@color/corBotao"
-                android:text="Últimas Jogadas"
-                android:textColor="@color/corTexto" />
-        </LinearLayout>
-    </FrameLayout>
-
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Você"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
 </androidx.constraintlayout.widget.ConstraintLayout>
