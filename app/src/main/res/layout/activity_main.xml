@@ -110,7 +110,6 @@
         android:id="@+id/imagemComputadorId"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@mipmap/ic_launcher_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +120,6 @@
         android:id="@+id/imagemJogadorId"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +127,7 @@
         app:layout_constraintVertical_bias="0.879" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textoComputadorId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Computador"
@@ -142,7 +140,7 @@
         app:layout_constraintVertical_bias="0.56" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textoVoceId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Você"
