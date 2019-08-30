@@ -9,12 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class MainActivity extends Activity {
+
+    private DatabaseReference firebaseReferencia = FirebaseDatabase.getInstance().getReference();
 
     Random random = new Random();
 
@@ -94,11 +99,19 @@ public class MainActivity extends Activity {
 
         textoResultado.setText(resultado);
 
+        armazenarDados(resultado);
+
         if(resultado == "Você Venceu"){
             Vibrator vibrar = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibrar.vibrate(500);
         }
 
+    }
+
+    public void armazenarDados(String jogada){
+        DateFormat formatoData = new SimpleDateFormat("dd/MM HH:mm:ss");
+        Date date = new Date();
+        firebaseReferencia.child("ultimasJogadas").push().setValue("Resultado: " + jogada + " - Horário: " + formatoData.format(date));
     }
 
     @Override
@@ -113,7 +126,6 @@ public class MainActivity extends Activity {
 
         textoComputador = findViewById(R.id.textoComputadorId);
         textoVoce = findViewById(R.id.textoVoceId);
-
 
         textoComputador.setVisibility(View.INVISIBLE);
         textoVoce.setVisibility(View.INVISIBLE);
