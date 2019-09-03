@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class JogadasAnteriores extends AppCompatActivity {
 
@@ -32,19 +34,28 @@ public class JogadasAnteriores extends AppCompatActivity {
         getSupportActionBar().setTitle("Últimas Jogadas");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.corBarraTitulo)));
 
-
         listaJogadas = findViewById(R.id.listaJogadasId);
 
         final ArrayList<String> listaDeDados = new ArrayList<>();
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaDeDados);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeDados);
 
         jogadasReferencia.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                List<String> ultimasJogadas = new ArrayList<>();
+
                 for(DataSnapshot dados: dataSnapshot.getChildren()){
-                    listaDeDados.add(dados.getValue().toString());
+                    ultimasJogadas.add(dados.getValue().toString());
+                }
+
+                Collections.reverse(ultimasJogadas);
+
+                String[] arrayDeDados = ultimasJogadas.toArray(new String[ultimasJogadas.size()]);
+
+                for (int contador = 0; contador < arrayDeDados.length; contador++){
+                    listaDeDados.add(arrayDeDados[contador]);
                 }
 
                 adapter.notifyDataSetChanged();
