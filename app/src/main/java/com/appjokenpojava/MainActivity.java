@@ -110,13 +110,16 @@ public class MainActivity extends Activity {
     }
 
     public void armazenarDados(String jogada){
+
         DateFormat formatoData = new SimpleDateFormat("dd/MM HH:mm:ss");
         Date date = new Date();
-        firebaseReferencia.child("ultimasJogadas").push().setValue("Resultado: " + jogada + " - Horário: " + formatoData.format(date));
+        firebaseReferencia.child("ultimasJogadas").push().setValue(jogada + " - Data: " + formatoData.format(date) + " - (J)");
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

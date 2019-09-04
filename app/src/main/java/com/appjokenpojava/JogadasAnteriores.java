@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +25,11 @@ public class JogadasAnteriores extends AppCompatActivity {
     private DatabaseReference jogadasReferencia = databaseReferencia.child("ultimasJogadas");
 
     ListView listaJogadas;
+    ProgressBar carregamentoJogadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogadas_anteriores);
 
@@ -35,9 +39,12 @@ public class JogadasAnteriores extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.corBarraTitulo)));
 
         listaJogadas = findViewById(R.id.listaJogadasId);
+        carregamentoJogadas = findViewById(R.id.carregamentoJogadasId);
+
+        listaJogadas.setVisibility(View.INVISIBLE);
+        carregamentoJogadas.setVisibility(View.VISIBLE);
 
         final ArrayList<String> listaDeDados = new ArrayList<>();
-
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeDados);
 
         jogadasReferencia.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -46,25 +53,36 @@ public class JogadasAnteriores extends AppCompatActivity {
 
                 List<String> ultimasJogadas = new ArrayList<>();
 
-                for(DataSnapshot dados: dataSnapshot.getChildren()){
-                    ultimasJogadas.add(dados.getValue().toString());
-                }
+                if(!dataSnapshot.exists()){
 
-                Collections.reverse(ultimasJogadas);
+                    listaDeDados.add("Nenhuma jogada encontrada.");
 
-                String[] arrayDeDados = ultimasJogadas.toArray(new String[ultimasJogadas.size()]);
+                }else{
 
-                for (int contador = 0; contador < arrayDeDados.length; contador++){
-                    listaDeDados.add(arrayDeDados[contador]);
+                    for(DataSnapshot dados: dataSnapshot.getChildren()){
+                        ultimasJogadas.add(dados.getValue().toString());
+                    }
+
+                    Collections.reverse(ultimasJogadas);
+                    String[] arrayDeDados = ultimasJogadas.toArray(new String[ultimasJogadas.size()]);
+
+                    for (int contador = 0; contador < arrayDeDados.length; contador++){
+                        listaDeDados.add(arrayDeDados[contador]);
+                    }
+
                 }
 
                 adapter.notifyDataSetChanged();
                 listaJogadas.setAdapter(adapter);
 
+                listaJogadas.setVisibility(View.VISIBLE);
+                carregamentoJogadas.setVisibility(View.INVISIBLE);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
+
         });
     }
 

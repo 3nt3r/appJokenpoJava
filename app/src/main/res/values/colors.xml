@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimaryDark">#737877</color>
     <color name="corBotao">#1E90FF</color>
-    <color name="corTexto">#FFF</color>
+    <color name="corTexto">#FFFFFF</color>
     <color name="corBarraTitulo">#1E90FF</color>
 
 </resources>
