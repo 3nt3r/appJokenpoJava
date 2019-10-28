@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.RequiresApi;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,8 +40,16 @@ public class MainActivity extends Activity {
     String escolhaComputador = "";
     String resultado = "";
 
+    int primeiroTempoCarregamento = 0;
+    int segundoTempoCarregamento = 0;
+    int contadorJogadas = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void jokenpo(String usuario){
+
+        contadorJogadas++;
+
+        Toast.makeText(getApplicationContext(), "Jogada Nº " + contadorJogadas, Toast.LENGTH_LONG).show();
 
         escolhaUsuario = usuario;
 
@@ -110,18 +120,25 @@ public class MainActivity extends Activity {
     }
 
     public void armazenarDados(String jogada){
-
         DateFormat formatoData = new SimpleDateFormat("dd/MM HH:mm:ss");
         Date date = new Date();
         firebaseReferencia.child("ultimasJogadas").push().setValue(jogada + " - Data: " + formatoData.format(date) + " - (J)");
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DateFormat formatoData = new SimpleDateFormat("ss:SSS");
+        Date date = new Date();
+        String tempoAtual = formatoData.format(date);
+        String tempos[] = tempoAtual.split(":");
+
+        int minutosParaMilissegundos = Integer.parseInt(tempos[0]) * 1000;
+        int milissegundos = Integer.parseInt(tempos[1]);
+
+        primeiroTempoCarregamento = minutosParaMilissegundos + milissegundos;
 
         textoResultado = findViewById(R.id.textoResultadoId);
 
@@ -169,6 +186,25 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, JogadasAnteriores.class));
             }
         });
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        DateFormat formatoData = new SimpleDateFormat("ss:SSS");
+        Date date = new Date();
+        String tempoAtual = formatoData.format(date);
+        String tempos[] = tempoAtual.split(":");
+
+        int minutosParaMilissegundos = Integer.parseInt(tempos[0]) * 1000;
+        int milissegundos = Integer.parseInt(tempos[1]);
+
+        segundoTempoCarregamento = minutosParaMilissegundos + milissegundos;
+
+        int resultadoFinalCarregamento = segundoTempoCarregamento - primeiroTempoCarregamento;
+
+        Toast.makeText(getApplicationContext(), "Carregado em: " + Integer.toString(resultadoFinalCarregamento) + "ms", Toast.LENGTH_LONG).show();
+    }
+
 }
